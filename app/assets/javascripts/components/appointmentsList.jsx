@@ -3,7 +3,7 @@ class AppointmentsList extends React.Component {
     return (<div>
         {this.props.appointmentData.map(function(display){
           return(
-            <Appointment display={display} />
+            <Appointment display={display} key={display.id}/>
           )})}
       </div>)
    }
