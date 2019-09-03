@@ -3,10 +3,4 @@
 
 %h3 Make a new appointment
 
-=form_for @appointment, remote: true do |f|
-  = f.text_field :title
-  = f.text_field :appointment_time
-  = f.submit 'Schedule'
-
-#appointments
-  =render 'appointments'
+= react_component 'Appointments', data: @appointments 
