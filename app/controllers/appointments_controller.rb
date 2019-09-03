@@ -3,4 +3,14 @@ class AppointmentsController < ApplicationController
     @appointments = Appointment.order('appointment_time ASC')
     @appointment = Appointment.new
   end
+
+  def create
+    @appointment = Appointment.create(appointment_params)
+    redirect_to root_path
+  end
+
+  private
+  def appointment_params
+    params.require(:appointment).permit(:title, :appointment_time)
+  end
 end
