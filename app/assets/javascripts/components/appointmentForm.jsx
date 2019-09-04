@@ -13,7 +13,16 @@ class AppointmentForm extends React.Component {
     this.props.onFormSubmit()
   }
 
+  setApptTime(e){
+    var name = 'input_appointment_time'
+    obj = {}
+    if (obj[name] = e.toDate()){
+      this.props.onUserInput(obj);
+    }
+  }
+
   render() {
+    const inputProps = {name: 'appointment_time'}
     return (<div>
       <h2>Schedule an appointment</h2>
         <form onSubmit={this.handleSubmit.bind(this)}>
@@ -21,11 +30,13 @@ class AppointmentForm extends React.Component {
             value={this.props.input_title}
             onChange={this.handleChange.bind(this)}
             />
-          <input name='input_appointment_time' placeholder='date and time'
+          <Datetime
+            input = {false}
+            open = {true}
+            inputProps = {inputProps}
             value={this.props.input_appointment_time}
-            onChange={this.handleChange.bind(this)}
+            onChange={this.setApptTime.bind(this)}
             />
-          <Datetime />
           <input type='submit' value='Confirm' />
         </form>
       </div>)
