@@ -25,6 +25,7 @@ class AppointmentForm extends React.Component {
             value={this.props.input_appointment_time}
             onChange={this.handleChange.bind(this)}
             />
+          <Datetime />
           <input type='submit' value='Confirm' />
         </form>
       </div>)
