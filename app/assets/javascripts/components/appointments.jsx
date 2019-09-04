@@ -19,13 +19,17 @@ class Appointments extends React.Component {
     }
     $.post('/appointments',{appointment: appointment})
      .done(function(data){
+       console.log(data)
        this.addNewAppointment(data)
      }.bind(this))
   }
 
   addNewAppointment(appointment){
-    const appointments = React.addons.update(this.state.appointmentData, { $push: [appointment] })
-    this.setState({appointmentData: appointments})
+    var appointments = this.state.appointmentData.concat(appointment);
+    appointments = appointments.sort(function(a,b){
+      return new Date(a.appointment_time) - new Date(b.appointment_time)
+    })
+    this.setState({ appointmentData: appointments });
   }
 
   render() {
