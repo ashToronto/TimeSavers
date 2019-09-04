@@ -3,7 +3,7 @@ class Appointment extends React.Component {
     return (
       <div>
           <h3>{this.props.display.title}</h3>
-          <p>{this.props.display.appointment_time}</p>
+          <p>{moment(this.props.display.appointment_time).format('MMMM DD YYYY, h:mm:ss a')}</p>
       </div>)
    }
 }
